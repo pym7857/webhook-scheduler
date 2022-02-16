@@ -2,8 +2,8 @@ name: birthday
 
 on:
   schedule:
-    - cron: '00 0 * 2 *'
-    - cron: '10 0 * 2 *'
+    - cron: '00 2 * 2 *'
+    - cron: '10 2 * 2 *'
     
 jobs:
   build:
