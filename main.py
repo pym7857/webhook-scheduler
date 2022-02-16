@@ -1,9 +1,10 @@
-#python 3.8.6
+#python 3.9.1 (mac)
 import requests
 import json
 import pandas as pd 
 import datetime
 from korean_lunar_calendar import KoreanLunarCalendar
+import pymsteams
 
 if __name__ == "__main__":
 
@@ -79,31 +80,37 @@ if __name__ == "__main__":
     # nowDate = str(now.strftime('%Y-%m-%d'))
     # print(nowDate)      # 2018-07-28
 
-    nowDate = '2022-04-04'
+    nowDate = '2022-03-19'
 
     # TODO
-    url = 'https://lselectricdwp.webhook.office.com/webhookb2/67573c49-c614-4240-908a-bc778b3855a9@247258cc-5eb2-4fd4-9bb2-f272103f0c34/IncomingWebhook/a2f13b2f58de4f7eac433fb7f5a73e63/667762b1-4f18-4ffe-bf9c-3b0df246edc0'
+    web_hook_url = 'https://lselectricdwp.webhook.office.com/webhookb2/67573c49-c614-4240-908a-bc778b3855a9@247258cc-5eb2-4fd4-9bb2-f272103f0c34/IncomingWebhook/a2f13b2f58de4f7eac433fb7f5a73e63/667762b1-4f18-4ffe-bf9c-3b0df246edc0'
+
+    myTeamsMessage = pymsteams.connectorcard(web_hook_url)
 
     # 현재날짜와 일치하는 사람의 부서, 이름 추출 
     if nowDate in dx_dict.keys():
         for dept, name in dx_dict[nowDate]:
-            payload = {
-                "text": f"{dept} {name} 생일이에요! 축하해요!"
-            }
-            headers = {
-                'Content-Type': 'application/json'
-            }
-            response = requests.post(url, headers=headers, data=json.dumps(payload))
-            print(response.text.encode('utf8'))
+            teams_message = pymsteams.connectorcard(web_hook_url)
 
+            # create the section
+            myMessageSection = pymsteams.cardsection()
+            # Section Title
+            myMessageSection.title("Section title")
+            # Activity Elements
+            myMessageSection.activityTitle("my activity title")
+            myMessageSection.activitySubtitle("my activity subtitle")
+            myMessageSection.activityImage("http://i.imgur.com/c4jt321l.png")
+            myMessageSection.activityText("This is my activity Text")
+            # Facts are key value pairs displayed in a list.
+            myMessageSection.addFact("this", "is fine")
+            myMessageSection.addFact("this is", "also fine")
+            # Section Text
+            myMessageSection.text("This is my section text")
+            # Section Images
+            myMessageSection.addImage("http://i.imgur.com/c4jt321l.png", ititle="This Is Fine")
+            # Add your section to the connector card object before sending
+            teams_message.addSection(myMessageSection)
 
-    # url = 'https://lselectricdwp.webhook.office.com/webhookb2/67573c49-c614-4240-908a-bc778b3855a9@247258cc-5eb2-4fd4-9bb2-f272103f0c34/IncomingWebhook/a2f13b2f58de4f7eac433fb7f5a73e63/667762b1-4f18-4ffe-bf9c-3b0df246edc0'
-    # payload = {
-    #     "text": "Sample alert text"
-    # }
-    # headers = {
-    #     'Content-Type': 'application/json'
-    # }
-    # response = requests.post(url, headers=headers, data=json.dumps(payload))
-    # print(response.text.encode('utf8'))
-
+            teams_message.text(f"🎉오늘은 {dept} {name}님의 생일이에요! 축하해요!")
+            teams_message.color('#DD7AF5') # theme color 
+            teams_message.send()
