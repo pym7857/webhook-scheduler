@@ -95,19 +95,19 @@ if __name__ == "__main__":
             # create the section
             myMessageSection = pymsteams.cardsection()
             # Section Title
-            myMessageSection.title("Section title")
+            myMessageSection.title("📧생일축하 메세지📧")
             # Activity Elements
-            myMessageSection.activityTitle("my activity title")
-            myMessageSection.activitySubtitle("my activity subtitle")
-            myMessageSection.activityImage("http://i.imgur.com/c4jt321l.png")
-            myMessageSection.activityText("This is my activity Text")
+            myMessageSection.activityTitle(f"{dept}")
+            myMessageSection.activitySubtitle(f"{name}")
+            myMessageSection.activityImage("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/LS_logo.svg/1200px-LS_logo.svg.png")
+            # myMessageSection.activityText("Congraturation!")
             # Facts are key value pairs displayed in a list.
-            myMessageSection.addFact("this", "is fine")
-            myMessageSection.addFact("this is", "also fine")
+            # myMessageSection.addFact("this", "is fine")
+            # myMessageSection.addFact("this is", "also fine")
             # Section Text
-            myMessageSection.text("This is my section text")
+            myMessageSection.text("HAPPY BIRTHDAY !")
             # Section Images
-            myMessageSection.addImage("http://i.imgur.com/c4jt321l.png", ititle="This Is Fine")
+            myMessageSection.addImage("https://i.imgur.com/0AVmRiD.jpeg", ititle="This Is Fine")
             # Add your section to the connector card object before sending
             teams_message.addSection(myMessageSection)
 
