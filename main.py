@@ -84,8 +84,11 @@ if __name__ == "__main__":
 
     # TODO
     
+    # 비전실 일반
+    web_hook_url = 'https://lselectricdwp.webhook.office.com/webhookb2/6092c94e-c390-4d39-808d-67fff38a44e7@247258cc-5eb2-4fd4-9bb2-f272103f0c34/IncomingWebhook/22c6a1caa8ad4570befbb61fb61f5bec/667762b1-4f18-4ffe-bf9c-3b0df246edc0'
+    
     # dx-lab 
-    web_hook_url = 'https://lselectricdwp.webhook.office.com/webhookb2/67573c49-c614-4240-908a-bc778b3855a9@247258cc-5eb2-4fd4-9bb2-f272103f0c34/IncomingWebhook/d2590810eae4454abf56af9d1579fe05/667762b1-4f18-4ffe-bf9c-3b0df246edc0'
+    #web_hook_url = 'https://lselectricdwp.webhook.office.com/webhookb2/67573c49-c614-4240-908a-bc778b3855a9@247258cc-5eb2-4fd4-9bb2-f272103f0c34/IncomingWebhook/d2590810eae4454abf56af9d1579fe05/667762b1-4f18-4ffe-bf9c-3b0df246edc0'
     
     # playground 
     # web_hook_url = 'https://lselectricdwp.webhook.office.com/webhookb2/67573c49-c614-4240-908a-bc778b3855a9@247258cc-5eb2-4fd4-9bb2-f272103f0c34/IncomingWebhook/a2f13b2f58de4f7eac433fb7f5a73e63/667762b1-4f18-4ffe-bf9c-3b0df246edc0'
