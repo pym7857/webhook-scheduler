@@ -11,7 +11,7 @@ if __name__ == "__main__":
     now_year = '2022'
 
     # 컬럼, 행 쳐내기 
-    df = pd.read_excel('data/birthday_4.xlsx', names=['dd', 'dept', 'name', 'birthday'])
+    df = pd.read_excel('data/birthday_5.xlsx', names=['dd', 'dept', 'name', 'birthday'])
     df.drop(['dd'], axis=1, inplace=True)
     df = df[1:]
 
